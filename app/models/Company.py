@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from app import db  
 
 class Company(db.Model):
     __tablename__ = 'company'
@@ -20,4 +19,5 @@ class Company(db.Model):
         self.number = number
         self.neighborhood = neighborhood
         self.postal_code = postal_code
-        
+    def __repr__(self):
+        return f'<Company id:{self.id} social_name:{self.social_name} cnpj:{self.cnpj} street:{self.street} number:{self.number} neighborhood:{self.neighborhood} postal_code:{self.postal_code}>'
