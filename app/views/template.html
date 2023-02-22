@@ -68,7 +68,7 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="cadastrosDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{user.username}}
+              {{userSession.username}}
             </a>
             <div class="dropdown-menu" aria-labelledby="cadastrosDropdown">
               <a class="dropdown-item" href="{{ url_for('login.logout') }}">Sair</a>

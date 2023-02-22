@@ -1,24 +1,36 @@
 {% extends 'template.html' %}
 {% block content %}
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h1 class="mb-4">{{ id }}</h1>
-        <ul class="list-unstyled">
-          <li>
-            <strong>CNPJ:</strong> {{ company.cnpj }}
-          </li>
-          <li>
-            <strong>Street:</strong> {{ company.street }}, {{ company.number }}
-          </li>
-          <li>
-            <strong>Neighborhood:</strong> {{ company.neighborhood }}
-          </li>
-          <li>
-            <strong>Postal Code:</strong> {{ company.postal_code }}
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="container mt-5 top-space">
+    <a href="{{ url_for('company.registerIndex') }}" class="btn btn-primary">Cadastrar Nova Empresa</a>
+    {% if companies %}
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Razão Social</th>
+            <th>CNPJ</th>
+            <th>Endereço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for company in companies %}
+            <tr>
+              <td>{{ company.id }}</td>
+              <td>{{ company.social_name }}</td>
+              <td>{{ company.cnpj }}</td>
+              <td>{{ company.street }}, {{ company.number }}, {{ company.neighborhood }}, {{ company.postal_code }}</td>
+              <td>
+                <a href="#" class="btn btn-primary">Detalhes</a>
+                <a href="#" class="btn btn-success">Editar</a>
+                <a href="#" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta empresa?')">Excluir</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Nenhuma empresa cadastrada.</p>
+    {% endif %}
   </div>
 {% endblock %}

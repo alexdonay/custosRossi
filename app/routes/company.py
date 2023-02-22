@@ -7,32 +7,20 @@ company_bp = Blueprint('company', __name__)
 
 @company_bp.route('/company', methods=['GET'])
 def index():
-    user_id = session.get('user_id')
-    companyes = Company.query.all()
+    userSessionId = session.get('user_id')
+    userSession = User.query.filter_by(id=userSessionId).first()
+    companies = Company.query.all()
     if not auth("/company"):
         return render_template('login.html')
-    if companyes == None:
-        print(companyes)
+    if companies == None:
         return redirect('company.register')
-    company = Company.query.all()
-    
-    return render_template('/company/index.html',user=None, auth=auth,company = company, id = 1)
+    return render_template('/company/index.html', user=None, auth=auth, companies = companies, userSession=userSession)
 
-@company_bp.route('/company', methods=['POST'])
-def register():
-    user_id = session.get('user_id')
-    if not auth("/company"):
+@company_bp.route('/company/register', methods=['GET'])
+def registerIndex():
+    userSessionId = session.get('user_id')
+    userSession = User.query.filter_by(id=userSessionId).first()
+    if not auth("/company/register"):
         return render_template('login.html')
-    social_name = request.form['social_name']
-    cnpj = request.form['cnpj']
-    street = request.form['street']
-    number = request.form['number']
-    neighborhood = request.form['neighborhood']
-    postal_code = request.form['postal_code']
-        
-    company = Company(social_name=social_name, cnpj=cnpj, street=street, number=number, neighborhood=neighborhood, postal_code=postal_code)
-    db.session.add(company)
-    db.session.commit()
-        
-    return redirect(url_for('company.index'))
-    
+    return render_template('/company/register.html', auth = auth, userSession = userSession)
+
