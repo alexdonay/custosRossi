@@ -32,9 +32,11 @@ def new_project():
         return redirect(url_for('project'))
     userSessionId = session.get('user_id')
     userSession = User.query.filter_by(id=userSessionId).first()
+    users = User.query.all()
     company = Company.query.all()
     client = Client.query.all()
-    return render_template('/projects/register.html', Client = client, Company = company, auth = auth,  userSession = userSession)
+    print(company)
+    return render_template('/projects/register.html', users = users, Client = client, Company = company, auth = auth,  userSession = userSession)
     
 
 @project_bp.route('/project')
