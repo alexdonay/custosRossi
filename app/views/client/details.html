@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h1 class="mb-4">{{ client.social_name }}</h1>
+        <ul class="list-unstyled">
+          <li>
+            <strong>CNPJ:</strong> {{ client.cnpj }}
+          </li>
+          <li>
+            <strong>CPF:</strong> {{ client.cpf }}
+          </li>
+          <li>
+            <strong>Endereço:</strong> {{ client.street }}, {{ client.number }}
+          </li>
+          <li>
+            <strong>Bairro:</strong> {{ client.neighborhood }}
+          </li>
+          <li>
+            <strong>Cidade:</strong> {{ client.city }}
+          </li>
+          <li>
+            <strong>Estado:</strong> {{ client.state }}
+          </li>
+          <li>
+            <strong>CEP:</strong> {{ client.postal_code }}
+          </li>
+          <li>
+            <strong>Telefone:</strong> {{ client.phone }}
+          </li>
+          <li>
+            <strong>Observação:</strong> {{ client.observation }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

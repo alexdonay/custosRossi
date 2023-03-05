@@ -1,0 +1,31 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<div class ="container">
+<h1>Projetos</h1>
+
+<a href="{{ url_for('project.new_project') }}" class="btn btn-primary mb-3">Novo Projeto</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Endereço</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <th scope="row">{{ project.id }}</th>
+            <td>{{ project.company.name }}</td>
+            <td>{{ project.client.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.address }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

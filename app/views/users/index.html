@@ -26,8 +26,10 @@
             <td>{{ user.username }}</td>
             <td>{{ user.profile }}</td>
             <td>
-              <a href="/alter_user/{{ user.id }}" class="btn btn-primary">Alterar</a>
-              <a href="/delete_user/{{ user.id }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>
+              <a href="/user/update/{{ user.id }}" class="btn btn-primary">Alterar</a>
+              <a href="/user/delete/{{ user.id }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este usuário?')">Excluir</a>
+              <a href="/user/salary/{{ user.id }}" class="btn btn-primary">Alteraçoes de salário</a>
+              
           </td>
           </tr>
         {% endfor %}

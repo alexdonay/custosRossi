@@ -1,0 +1,81 @@
+{% extends 'template.html' %}
+{% block content %}
+
+  <div class="container">
+    <h2>Alterar dados do Cliente</h2>
+    <form method="POST" action="/client/update/{{client.id}}">
+      <div class="form-group">
+        <label for="social_name">Razão Social:</label>
+        <input type="text" class="form-control" id="social_name" name="social_name" required value="{{ client.social_name }}"/>
+      </div>
+      <div class="form-group">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99" oninput="formatar(this, '99.999.999/9999-99')" maxlength="18" value="{{ client.cnpj}}">
+
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF:</label>
+        <input type="text" class="form-control" id="cpf" name="cpf" placeholder="999.999.999-99" oninput="formatar(this, '999.999.999-99')" maxlength="15"  value="{{ client.cpf}}">
+
+      </div>
+      <div class="form-group">
+        <label for="street">Logradouro:</label>
+        <input type="text" class="form-control" id="street" name="street" required value = "{{ client.street }}">
+      </div>
+      <div class="form-group">
+        <label for="number">Número:</label>
+        <input type="text" class="form-control" id="number" name="number" required value = "{{ client.number }}">
+      </div>
+      <div class="form-group">
+        <label for="neighborhood">Bairro:</label>
+        <input type="text" class="form-control" id="neighborhood" name="neighborhood" required value="{{ client.neighborhood }}">
+      </div>
+      <div class="form-group">
+        <label for="city">Cidade:</label>
+        <input type="text" class="form-control" id="city" name="city" required value = "{{ client.city }}">
+      </div>
+      <div class="form-group">
+        <label for="State">Estado:</label>
+        <input type="text" class="form-control" id="state" name="state" required value="{{ client.state }}">
+      </div>
+      <div class="form-group">
+        <label for="postal_code">CEP:</label>
+        <input type="text" class="form-control" id="postal_code" name="postal_code"  placeholder="99.999-999" oninput="formatar(this, '99.999-999')" maxlength="18" required value ="{{ client.postal_code }}">
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefone:</label>
+        <input type="text" class="form-control" id="phone" name="phone"  placeholder="(99)99999.9999 " oninput="formatar(this, '(99)99999.9999')" maxlength="18" required value = {{ client.phone }}>
+      </div>
+      <div class="form-group">
+        <label for="observation">Observação:</label>
+        <textarea class="form-control" id="observation" name="observation" rows="3">{{ client.observation }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Gravar</button>
+    </form>
+  </div>
+  <script>
+
+function formatar(campo, mascara) {
+  let valorCampo = campo.value;
+  
+  // Remove todos os caracteres não numéricos
+  valor = valorCampo.replace(/\D/g, "");
+  
+  // Aplica a máscara
+  let posicao = 0;
+  let novoValor = "";
+  for (let i = 0; i < mascara.length; i++) {
+    if (mascara[i] === "9") {
+      novoValor += valor[posicao] || "";
+      posicao++;
+    } else {
+      novoValor += mascara[i];
+    }
+  }
+  
+  // Define o valor formatado no campo de entrada
+  campo.value = novoValor;
+}
+
+  </script>
+{% endblock %}

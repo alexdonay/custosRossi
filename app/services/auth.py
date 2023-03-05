@@ -1,5 +1,4 @@
 from flask import *
-from flask_sqlalchemy import SQLAlchemy
 from app.models.User import User
 import app.config as config
 def auth(route):

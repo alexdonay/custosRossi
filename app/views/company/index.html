@@ -23,7 +23,7 @@
               <td>{{ company.street }}, {{ company.number }}, {{ company.neighborhood }},{{ company.neighborhood }}, {{ company.postal_code }}</td>
               <td>
                 <a href="/company/details/{{ company.id }}" class="btn btn-primary">Detalhes</a>
-                <a href="#" class="btn btn-success">Editar</a>
+                <a href="/company/update/{{ company.id }}"class="btn btn-success">Editar</a>
                 <a href="/company/delete/{{ company.id }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta empresa?')">Excluir</a>
               </td>
             </tr>

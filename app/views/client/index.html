@@ -1,0 +1,65 @@
+{% extends 'template.html' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block content %}
+<div class="container">
+
+
+  <h1>Clientes</h1>
+  <a href="{{ url_for('client.register') }}" class="btn btn-primary">Cadastrar Cliente</a>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Razão Social:</th>
+        <th>CNPJ:</th>
+        <th>CPF:</th>
+        <th>Ações</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for client in clients %}
+      <tr>
+        <td>{{ client.social_name }}</td>
+        <td>{{ client.cnpj }}</td>
+        <td>{{ client.cpf }}</td>
+
+        <td>
+          <a href="/client/details/{{ client.id }}" class="btn btn-primary">Detalhes</a>
+          <a href="/client/update/{{ client.id }}" class="btn btn-success">Editar</a>
+          <a href="/client/delete/{{ client.id }}" class="btn btn-danger"
+            onclick="return confirm('Tem certeza que deseja excluir este Cliente?')">Excluir</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <script>
+
+    function formatar(campo, mascara) {
+      let valorCampo = campo.value;
+
+      // Remove todos os caracteres não numéricos
+      valor = valorCampo.replace(/\D/g, "");
+
+      // Aplica a máscara
+      let posicao = 0;
+      let novoValor = "";
+      for (let i = 0; i < mascara.length; i++) {
+        if (mascara[i] === "9") {
+          novoValor += valor[posicao] || "";
+          posicao++;
+        } else {
+          novoValor += mascara[i];
+        }
+      }
+
+      // Define o valor formatado no campo de entrada
+      campo.value = novoValor;
+    }
+
+  </script>
+</div>
+{% endblock %}

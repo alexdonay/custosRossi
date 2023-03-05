@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <h1 class="text-center mb-4">Adicionar Alteração de Salário</h1>
+  <h2 class="text-center mb-4">Usuário: {{ user.name }}</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form method="POST">
+        <div class="form-group">
+          <label for="salary">Salário</label>
+          <input type="number" class="form-control" id="salary" name="salary" required>
+        </div>
+        <div class="form-group">
+          <label for="start_date">Data de Início</label>
+          <input type="date" class="form-control" id="start_date" name="start_date" required>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+          <a href="{{ url_for('user.salary_history', user_id=user.id) }}" class="btn btn-secondary">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

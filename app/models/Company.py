@@ -1,12 +1,10 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from app import db  
 
 class Company(db.Model):
     __tablename__ = 'company'
     id = db.Column(db.Integer, primary_key=True)
     social_name = db.Column(db.String(50), nullable=False)
-    cnpj = db.Column(db.String(50), unique=True, nullable=False)
+    cnpj = db.Column(db.String(14), unique=True, nullable=False)
     street = db.Column(db.String(80), nullable=False)
     number = db.Column(db.String(6), nullable=False)
     neighborhood = db.Column(db.String(80), nullable=False)

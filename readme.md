@@ -11,3 +11,6 @@ flask db init
 flask db migrate -m "initial migration"
 flask db upgrade
 pip install bcrypt
+pip install Flask-Login Flask-Principal
+pip install Flask-Security
+pip install flask-script

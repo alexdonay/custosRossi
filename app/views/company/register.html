@@ -10,7 +10,8 @@
       </div>
       <div class="form-group">
         <label for="cnpj">CNPJ:</label>
-        <input type="text" class="form-control" id="cnpj" name="cnpj" required>
+        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99" oninput="formatar(this, '99.999.999/9999-99')" maxlength="18" required>
+
       </div>
       <div class="form-group">
         <label for="street">Logradouro:</label>
@@ -34,14 +35,38 @@
       </div>
       <div class="form-group">
         <label for="postal_code">CEP:</label>
-        <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+        <input type="text" class="form-control" id="postal_code" name="postal_code"  placeholder="99.999-999" oninput="formatar(this, '99.999-999')" maxlength="18" required>
       </div>
       <div class="form-group">
         <label for="phone">Telefone:</label>
-        <input type="text" class="form-control" id="phone" name="phone" required>
+        <input type="text" class="form-control" id="phone" name="phone"  placeholder="(99)99999.9999 " oninput="formatar(this, '(99)99999.9999')" maxlength="18" required>
       </div>
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
   </div>
+  <script>
 
+function formatar(campo, mascara) {
+  let valorCampo = campo.value;
+  
+  // Remove todos os caracteres não numéricos
+  valor = valorCampo.replace(/\D/g, "");
+  
+  // Aplica a máscara
+  let posicao = 0;
+  let novoValor = "";
+  for (let i = 0; i < mascara.length; i++) {
+    if (mascara[i] === "9") {
+      novoValor += valor[posicao] || "";
+      posicao++;
+    } else {
+      novoValor += mascara[i];
+    }
+  }
+  
+  // Define o valor formatado no campo de entrada
+  campo.value = novoValor;
+}
+
+  </script>
 {% endblock %}

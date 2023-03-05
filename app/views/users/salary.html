@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<body>
+    <div class="container my-5">
+      <h1 class="text-center mb-4">Histórico de Salários</h1>
+      <h2 class="text-center mb-4">Usuário: {{user.name}}</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <a href="/user/salary/new/{{ user.id }}" class="btn btn-primary">Cadastrar Novo</a>
+
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Salário</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for salary in salaries %}
+              <tr>
+                <td>{{ salary.start_date.strftime('%d/%m/%Y') }}</td>
+                <td>R$ {{ salary.salary}}</td>
+                <td>
+                  <a  class="btn btn-primary">Alterar</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not salaries %}
+          <p class="text-center">Não há histórico de salários registrado.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+  {% endblock %}
