@@ -1,5 +1,6 @@
 {% extends 'template.html' %}
 {% block content %}
+
   <div class="container mt-5 top-space">
     <a href="{{ url_for('company.registerIndex') }}" class="btn btn-primary">Cadastrar Nova Empresa</a>
     {% if companies %}
@@ -19,11 +20,11 @@
               <td>{{ company.id }}</td>
               <td>{{ company.social_name }}</td>
               <td>{{ company.cnpj }}</td>
-              <td>{{ company.street }}, {{ company.number }}, {{ company.neighborhood }}, {{ company.postal_code }}</td>
+              <td>{{ company.street }}, {{ company.number }}, {{ company.neighborhood }},{{ company.neighborhood }}, {{ company.postal_code }}</td>
               <td>
-                <a href="#" class="btn btn-primary">Detalhes</a>
+                <a href="/company/details/{{ company.id }}" class="btn btn-primary">Detalhes</a>
                 <a href="#" class="btn btn-success">Editar</a>
-                <a href="#" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta empresa?')">Excluir</a>
+                <a href="/company/delete/{{ company.id }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta empresa?')">Excluir</a>
               </td>
             </tr>
           {% endfor %}

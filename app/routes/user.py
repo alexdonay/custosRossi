@@ -116,6 +116,8 @@ def alter_user(user_id):
 
 @user.route('/delete_user/<int:user_id>', methods=['GET'])
 def delete_user(user_id):
+    if not auth('/user/delete_user'):
+        return render_template('notFound.html')
     user = User.query.filter_by(id=user_id).first()
     if user and user_id != user.id:
         db.session.delete(user)

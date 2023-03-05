@@ -15,10 +15,11 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///banco.db"
 USER_ROLES = ['admin', 'manager', 'user']
 PERMISSIONS = {
     '/': ['admin', 'manager', 'user'],
-    '/admin': ['admin'],
-    '/manager': ['admin', 'manager'],
     '/user': ['admin'],
-    '/user/register': ['admin',],
+    '/user/register': ['admin'],
+    '/user/delete_user': ['admin'],
     '/company': ['admin'],
-    '/company/register': ['admin']
-}
+    '/company/register': ['admin'],
+    '/company/delete/':['admin'],
+    '/company/details/':['admin']
+}   

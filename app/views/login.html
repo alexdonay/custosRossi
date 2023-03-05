@@ -20,6 +20,12 @@
               <label for="password">Senha</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
             </div>
+            <label for="profile">Empresa:</label>
+              <select class="form-control" id="companySession" name="companySession">
+              {%for company in companys%}
+                <option value="{{ company.id }}">{{ company.social_name }}</option>
+              {% endfor %}
+            </select>
             <button type="submit" class="btn btn-primary btn-block">Entrar</button>
           </form>
         </div>

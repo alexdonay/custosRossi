@@ -1,0 +1,33 @@
+{% extends 'template.html' %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-3">
+        <h1 class="mb-4">{{ company.social_name }}</h1>
+        <ul class="list-unstyled">
+          <li>
+            <strong>CNPJ:</strong> {{ company.cnpj }}
+          </li>
+          <li>
+            <strong>Endereço:</strong> {{ company.street }}, {{ company.number }}
+          </li>
+          <li>
+            <strong>Bairro:</strong> {{ company.neighborhood }}
+          </li>
+          <li>
+            <strong>Cidade:</strong> {{ company.city }}
+          </li>
+          <li>
+            <strong>Estado:</strong> {{ company.state }}
+          </li>
+          <li>
+            <strong>CEP:</strong> {{ company.postal_code }}
+          </li>
+          <li>
+            <strong>Telefone:</strong> {{ company.phone }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}
