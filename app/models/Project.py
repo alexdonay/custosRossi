@@ -12,12 +12,23 @@ class Project(db.Model):
     state = db.Column(db.String(50), nullable=True)
     zip_code = db.Column(db.String(10), nullable=True)
     phone = db.Column(db.String(11), nullable=True)
-    users = db.relationship('User', secondary='project_users', backref='projects')
+    users = db.relationship('User', secondary='project_users', backref=db.backref('projects', lazy=True))
     
-    def __init__(self):
-        pass
+    def __init__(self, company_id, client_id, description, number, street, city, state, zip_code, phone):
+        self.company_id = company_id
+        self.client_id = client_id
+        self.description = description
+        self.number = number
+        self.street = street
+        self.city = city
+        self.state = state
+        self.zip_code = zip_code
+        self.phone = phone
 
+def __repr__(self):
+    return f'<Project {self.id}: {self.description} ({self.city}, {self.state}) Company: {self.company.name}, Client: {self.client.name}, Users: {[user.username for user in self.users]}>'
 project_users = db.Table('project_users',
     db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True),
     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )
+
