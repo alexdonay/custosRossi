@@ -43,6 +43,9 @@ def new_project():
 @login_required
 def index():
     userSession = User.query.get(session.get('user_id'))
-    projects = Project.query.all()
-    print(projects[0].users[0].name)
-    return render_template('/projects/index.html', auth=auth, projects=projects, userSession=userSession)
+    projetos = Project.query.all() # Obtenha uma lista de todos os projetos
+    projeto = Project.query.first()  # Exemplo de consulta para obter um objeto Project
+    print(projetos[0].client.social_name)    
+   
+    
+    return render_template('/projects/index.html', auth=auth, projects=projetos, userSession=userSession)

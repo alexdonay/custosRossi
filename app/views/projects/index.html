@@ -12,7 +12,6 @@
                 <th scope="col">Empresa</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Descrição</th>
-                <th scope="col">Endereço</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +19,10 @@
             {% for project in projects %}
             <tr>
                 <th scope="row">{{ project.id }}</th>
+                <th scope="row">{{ project.company.social_name }}</th>
+                <th scope="row">{{ project.client.social_name }}</th>
+                <th scope="row">{{ project.description }}</th>
 
-                
-                
 
             </tr>
             {% endfor %}
